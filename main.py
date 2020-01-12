@@ -343,4 +343,4 @@ class WebChat(Namespace):
 socketio.on_namespace(WebChat('/chat'))
 
 if __name__ == '__main__':
-	socketio.run(app, debug=True, port=5000)
+	app.run()
