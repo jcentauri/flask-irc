@@ -11,7 +11,7 @@ async_mode = None
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "s3cr3t!"
 
-socketio = SocketIO(app, async_mode=async_mode)
+socketio = SocketIO(app)
 clients = []
 users = {}
 room_lists = {}
