@@ -8,7 +8,7 @@ from flask_socketio import SocketIO, Namespace, emit, disconnect, join_room, roo
 
 async_mode = None
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__)
 app.config['SECRET_KEY'] = "s3cr3t!"
 
 socketio = SocketIO(app, async_mode=async_mode)
@@ -342,5 +342,5 @@ class WebChat(Namespace):
 
 socketio.on_namespace(WebChat('/chat'))
 
-if __name__ == '__main__':
-	 socketio.run(app, debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
