@@ -371,12 +371,29 @@
 	                    $(".message-form").submit();
 	                }
 	            })
+
+
 				// event when submit message
+
 				$(document).delegate('form', 'submit', function(event){
 					var $form = $(this);
 					var friend_id = $form.attr('id');
 					if (friend_id != 'room_create') {
-						var text = $form[0][1].value;
+						var d = new Date();
+						var date = formatDate(d);
+
+							function formatDate(date){
+							 	var hours = date.getHours();
+ 								var minutes = date.getMinutes();
+								var ampm = hours >= 12 ? 'pm' : 'am';
+								hours = hours % 12;
+								hours = hours ? hours : 12;
+								minutes = minutes < 10 ? '0' + minutes : minutes;
+								var strTime = hours + ':' + minutes + ampm;
+								return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear() + " " + strTime;
+							}
+
+						var text = " [ " + date + " ] " + $form[0][1].value;
 
 						// submit action for room message
 						if (friend_id.match("^rooms_")) {
